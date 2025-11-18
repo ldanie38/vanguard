@@ -1,161 +1,201 @@
-/* CSS BY YOUR NAME */
-
-/* IMPORTED FONTS*/
-/* IMPORT "INTER" FROM GOOGLE FONTS"
-
-/* CSS RESET */
-/* http://meyerweb.com/eric/tools/css/reset/
-v2.0 | 20110126
-License: none (public domain)
+/* Full CSS (mobile-first) for your provided HTML
+   Breakpoints:
+   - Small: 0–479px
+   - Medium: 480px–699px
+   - Large: 700px and up
+   Do not modify HTML. Keep input#menu-toggle before label and ul.menu.
 */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-    display: block;
-}
-body {
-    line-height: 1;
-}
-ol, ul {
-    list-style: none;
-}
-blockquote, q {
-    quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-    content: '';
-    content: none;
-}
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-}
+
+/* RESET / BASE */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; height: 100%; font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+ol, ul { list-style: none; margin: 0; padding: 0; }
+button, input, select, textarea { font: inherit; color: inherit; }
 
 /* ROOT VARIABLES */
-:root {
-    --blue: #007BFF;
-    --red: #FF4500;
-    --white: #EAEAEA;
-    --black: #000000;
-    --charcoal: #333333;
-    --font: "Inter", sans-serif;
+:root{
+  --nav-bg: #111111;
+  --nav-ink: #ffffff;
+  --accent: #0b3a66;
+  --container-gap: 1rem;
+  --nav-height: 56px;
+  --bp-small: 480px;
+  --bp-medium: 700px;
+  --bp-large: 1024px;
 }
 
-/* GLOBAL STYLES (MOBILE FIRST (SMALL) */
-
-/* MIN-WIDTH OF THE PAGE SHOULD NOT GO BELOW 400PX */
-
-/* ADD A DIV WITH THE CLASS OF CONTAINER TO EVERY CONTENT CONTAINER THIS IS ALLOW THE BASE ELEMENTS TO BE 100% WIDTH, BUT CONSTRAIN THE ACTUAL CONTENT TO 90% */
+/* LAYOUT CONTAINER */
 .container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: var(--container-gap);
+  padding-right: var(--container-gap);
+  box-sizing: border-box;
 }
 
-/* ADD TO "INNOVATION & INVESTMENT SECTION (Photo by Kevin Matos on Unsplash) */
- {
-    background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('images/vanguard-hero.jpg') no-repeat center center/cover;
-    height: 80vh;
-    display: grid;
-    place-items: center;
-    text-align: center;
-    padding: 1rem;
-    overflow: hidden;
+/* HEADER / NAV (mobile-first) */
+header { width: 100%; background: var(--nav-bg); color: var(--nav-ink); }
+nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  position: relative;
+  min-height: var(--nav-height);
+  width: 100%;
+  z-index: 40;
 }
 
-/* ADD FLOATING SVG LOGO BEFORE THE H1 */
- {
-    content: "";
+/* BRAND */
+.brand { display: flex; flex-direction: column; gap: 0; margin: 0; }
+.brand h1 { color: var(--nav-ink); font-size: 1rem; margin: 0; font-weight: 700; }
+.brand .hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
-    left:-.5rem;
-    width: 3.75rem;
-    height: 3.75rem;
-    background: url('images/vanguard-logo.svg') no-repeat center/contain;
-
+/* HIDDEN CHECKBOX (kept in DOM) */
+#menu-toggle {
+  position: absolute;
+  left: -9999px;
+  width: 1px; height: 1px;
+  overflow: hidden; clip: rect(0 0 0 0);
+  border: 0; opacity: 0; pointer-events: none;
 }
-/* THIS ONE IS DONE FOR YOU */
-#bar-chart {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    align-items: flex-end;
-    justify-content: space-around;
+
+/* HAMBURGER LABEL */
+nav > label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; height: 40px;
+  background: transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-left: auto; /* pushes menu to the right on narrow screens */
+}
+nav > label:hover { background: rgba(255,255,255,0.04); }
+nav > label:focus { outline: 2px solid rgba(255,255,255,0.08); outline-offset: 2px; }
+
+/* SVG bars inside label */
+nav > label svg { display: block; width: 22px; height: 16px; }
+nav > label svg rect { fill: var(--nav-ink); transition: transform .22s ease, opacity .18s ease; transform-origin: center; }
+
+/* MENU (collapsed by default on mobile) */
+ul.menu {
+  width: 100%;
+  max-height: 0;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  transition: max-height .32s ease, opacity .2s ease;
+  opacity: 0;
+  text-align: center;
+  margin-top: .5rem;
+  background: transparent;
+  position: relative;
+  z-index: 20;
+}
+ul.menu li { margin: 0; }
+ul.menu li a {
+  display: block;
+  padding: .75rem 1rem;
+  color: var(--nav-ink);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: .98rem;
+}
+ul.menu li a:hover { background: rgba(255,255,255,0.06); }
+
+/* OPEN MENU WHEN CHECKED (input + label + ul.menu DOM order required) */
+#menu-toggle:checked ~ ul.menu,
+#menu-toggle:checked ~ .menu {
+  max-height: 800px;
+  opacity: 1;
+}
+
+/* MORPH HAMBURGER -> X (targets rects in svg by order) */
+#menu-toggle:checked + label svg rect:nth-child(2) { opacity: 0; }
+#menu-toggle:checked + label svg rect:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+#menu-toggle:checked + label svg rect:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ======================================================
+   SMALL (0 – 479px)
+   - compact paddings, stacked layout
+   ====================================================== */
+@media (max-width: calc(var(--bp-small) - 1px)) {
+  :root { --container-gap: 0.75rem; }
+  nav { padding: 0.4rem 0; }
+  .brand h1 { font-size: .98rem; }
+  nav > label { width: 40px; height: 40px; margin-left: auto; }
+  ul.menu li a { padding: .7rem .9rem; font-size: .95rem; }
+  /* keep menu full-width dropdown */
+  ul.menu { left: 0; right: 0; }
+}
+
+/* ======================================================
+   MEDIUM (480px – 699px)
+   - maintain hamburger, more space
+   ====================================================== */
+@media (min-width: var(--bp-small)) and (max-width: calc(var(--bp-medium) - 1px)) {
+  :root { --container-gap: 1rem; }
+  nav { padding: 0.5rem 0; }
+  .brand h1 { font-size: 1rem; }
+  nav > label { width: 44px; height: 44px; margin-left: auto; }
+  ul.menu { margin-top: .5rem; }
+  ul.menu li a { padding: .8rem 1rem; font-size: 1rem; }
+}
+
+/* ======================================================
+   LARGE (700px and up)
+   - hide hamburger, show inline menu on the right
+   ====================================================== */
+@media (min-width: var(--bp-medium)) {
+  nav { padding: .6rem 0; align-items: center; }
+  /* hide hamburger */
+  nav > label { display: none; }
+  /* show inline menu on the right */
+  ul.menu {
+    display: flex;
     gap: 1rem;
-    height: 300px;
-    width: 100%;
-    max-width: 800px;
-    padding: 1rem;
-    position: relative;
-}
-/* ADD ON TRANSITION ON HEIGHT */
-.bar {
-    width: 50px;
-    background: var(--charcoal);
-    border-radius: 10px;
-    position: relative;
-    transition: ;
-    height: 0;
-}
-/* THIS ONE IS DONE FOR YOU */
-.bar::after {
-    content: attr(data-year);
-    position: absolute;
-    bottom: -25px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 1rem;
-    font-weight: bold;
-    color: var(--white);
-}
-@keyframes stepUp {
-    0% {
-        height: 0;
-    }
-    100% {
-        height: var(--height);
-    }
-}
-/* ADD ANIMATION ON stepUp for 1s ease-in-out forwards */
-.bar {
-    animation: stepUp 1s ease-in-out forwards;
+    align-items: center;
+    justify-content: flex-end;
+    max-height: none;
+    opacity: 1;
+    margin-top: 0;
+    width: auto;
+    overflow: visible;
+    background: transparent;
+  }
+  ul.menu li a { padding: .5rem .75rem; font-size: .95rem; }
+  .brand { flex-direction: row; gap: 1rem; align-items: center; }
+  .brand h1 { font-size: 1.05rem; }
 }
 
+/* EXTRA LARGE (1024px and up): gentle scaling */
+@media (min-width: var(--bp-large)) {
+  :root { --container-gap: 1.25rem; --nav-height: 64px; }
+  .container { max-width: 1400px; }
+  .brand h1 { font-size: 1.1rem; }
+  ul.menu li a { font-size: 1rem; padding: .6rem .85rem; }
+}
 
-/* MEDIA QUERIES (MEDIUM) */ 
+/* HERO & BAR CHART (example content) */
+.hero {
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/vanguard-hero.jpg') no-repeat center/cover;
+  height: 40vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  color: var(--nav-ink);
+  padding: 1rem;
+  margin-top: .75rem;
+  border-radius: 6px;
+}
+#bar-chart { display: grid; grid-template-columns: repeat(5, 1fr); align-items: end; gap: 1rem; height: 260px; max-width: 800px; margin: 1rem auto; padding: 1rem 0; }
+.bar { background: #333; border-radius: 10px; height: 0; width: 100%; transition: height .5s ease; animation: stepUp 1s ease-in-out forwards; }
+.bar::after { content: attr(data-year); position: absolute; bottom: -25px; left: 50%; transform: translateX(-50%); font-size: .95rem; font-weight: 700; color: var(--nav-ink); }
+@keyframes stepUp { 0% { height: 0; } 100% { height: var(--height, 50%); } }
 
-    #results {
-        grid-template-columns: 1fr 1fr;
-    }
-    .results-container {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-    .results-table {
-        width: 50%;
-    }
-    .bar-chart {
-        width: 50%;
-    }
-
-
-/* MEDIA QUERIES (LARGE) */
+/* FOOTER UTIL */
+footer { text-align: center; padding: 1rem 0; color: #666; font-size: .95rem; }
