@@ -17,18 +17,27 @@ button, input, select, textarea { font: inherit; color: inherit; }
 
 @import url("https://use.typekit.net/xhr5ozi.css");
 
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap");
+
 
 /* ROOT VARIABLES */
 :root{
-  --h1-font: normal 700 2rem/1.1 "korolev", sans-serif;
+ 
+  --body-font: "Inter", sans-serif; 
+  --h1-font: normal 700 2rem/1.1 "Inter", sans-serif;
   --nav-bg: #000000;   
-  --nav-ink: #ffffff;   
-  --accent: #007BFF;    
+  --nav-ink: #EAEAEA; 
+  --accent: #007BFF;  
+  --charcoal: #333333;    
   --container-gap: 1rem;
-  --nav-height: 80px;
+  --nav-height: 75px;
   --bp-small: 480px;
   --bp-medium: 700px;
   --bp-large: 1024px;
+  --nav-h1-size: 1.90rem;  
+  --nav-link-size: 1.30rem;
+  --font: "Inter", sans-serif;
+
 }
 
 /* LAYOUT CONTAINER */
@@ -41,7 +50,11 @@ button, input, select, textarea { font: inherit; color: inherit; }
   box-sizing: border-box;
 
 }
+body {
 
+  background-color: var(--accent);
+ 
+}
 /* HEADER / NAV (mobile-first) */
 header { width: 100%;
      background: var(--nav-bg);
@@ -57,7 +70,7 @@ nav {
   width: 100%;
   z-index: 40;
   color: var(--accent);
-  font-family: var(--h1-font);
+  font: var(--h1-font);
   overflow: visible;
 }
 
@@ -65,9 +78,20 @@ nav h1, a{
   font: var(--h1-font);  
 }
 
+nav .brand h1,
+nav h1 {
+
+  font-size: var(--nav-h1-size);
+}
+
+nav a {
+  font-size: var(--nav-link-size);
+  font-weight: 700; 
+}
+
 /* BRAND */
 .brand { display: flex; flex-direction: column; gap: 0; margin: 0; }
-.brand h1 { color: var(--accent); font-size: 1rem; margin: 0; font-weight: 700; }
+.brand h1 { color: var(--accent);  margin: 0; font-weight: 700; }
 .brand .hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
 /* HIDDEN CHECKBOX (kept in DOM) */
@@ -134,6 +158,53 @@ ul.menu li a:hover { background: rgba(255,255,255,0.06); }
 #menu-toggle:checked + label svg rect:nth-child(2) { opacity: 0; }
 #menu-toggle:checked + label svg rect:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 #menu-toggle:checked + label svg rect:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* blue line */
+
+/* base — stays inside container on small screens */
+
+
+
+
+
+
+
+
+/* CTA button style (accessible, responsive) */
+.cta {
+  display: inline-block;
+  background: var(--accent, #007BFF);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.6rem 1.05rem;
+  border-radius: 8px;
+  border: 0;
+  line-height: 1;
+  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.18);
+  transition: background-color 180ms ease, transform 120ms ease, box-shadow 180ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* hover / active / focus states */
+.cta:hover {
+  background: color-mix(in srgb, var(--accent, #007BFF) 85%, black 15%);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(2, 6, 23, 0.22);
+}
+.cta:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 14px rgba(2, 6, 23, 0.2);
+}
+.cta:focus {
+  outline: 3px solid color-mix(in srgb, var(--accent, #007BFF) 30%, white 70%);
+  outline-offset: 3px;
+  box-shadow: 0 8px 22px rgba(2, 6, 23, 0.2);
+}
+
+
+
 
 /* ======================================================
    SMALL (0 – 479px)
@@ -212,6 +283,23 @@ ul.menu li a:hover { background: rgba(255,255,255,0.06); }
 .bar { background: #333; border-radius: 10px; height: 0; width: 100%; transition: height .5s ease; animation: stepUp 1s ease-in-out forwards; }
 .bar::after { content: attr(data-year); position: absolute; bottom: -25px; left: 50%; transform: translateX(-50%); font-size: .95rem; font-weight: 700; color: var(--nav-ink); }
 @keyframes stepUp { 0% { height: 0; } 100% { height: var(--height, 50%); } }
+
+/* button link */
+/* small / large size  */
+@media (max-width: 480px) {
+  .cta { padding: 0.55rem 0.9rem; font-size: 0.92rem; border-radius: 7px; }
+}
+@media (min-width: 1200px) {
+  .cta { padding: 0.75rem 1.25rem; font-size: 1rem; border-radius: 10px; }
+}
+
+/* optional subtle outline reset for browsers that draw a default focus ring */
+.cta::-moz-focus-inner { border: 0; padding: 0; }
+
+/*blue line*/
+@media (max-width: 480px) {
+  .container-nav::after { height: 8px; }
+}
 
 /* FOOTER UTIL */
 footer { text-align: center; padding: 1rem 0; color: #666; font-size: .95rem; }
