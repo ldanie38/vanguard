@@ -1,57 +1,73 @@
-/* Full CSS (mobile-first) for your provided HTML
+/* Lua daniele (mobile-first) 
    Breakpoints:
    - Small: 0–479px
    - Medium: 480px–699px
    - Large: 700px and up
-   Do not modify HTML. Keep input#menu-toggle before label and ul.menu.
 */
 
 /* RESET / BASE */
+
 *, *::before, *::after { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; height: 100%; font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+html, body { margin: 0; padding: 0; height: 100%; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; text-decoration: none; }
 ol, ul { list-style: none; margin: 0; padding: 0; }
 button, input, select, textarea { font: inherit; color: inherit; }
 
+
+@import url("https://use.typekit.net/xhr5ozi.css");
+
+
 /* ROOT VARIABLES */
 :root{
-  --nav-bg: #111111;
-  --nav-ink: #ffffff;
-  --accent: #0b3a66;
+  --h1-font: normal 700 2rem/1.1 "korolev", sans-serif;
+  --nav-bg: #000000;   
+  --nav-ink: #ffffff;   
+  --accent: #007BFF;    
   --container-gap: 1rem;
-  --nav-height: 56px;
+  --nav-height: 80px;
   --bp-small: 480px;
   --bp-medium: 700px;
   --bp-large: 1024px;
 }
 
 /* LAYOUT CONTAINER */
-.container {
+.container-nav {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding-left: var(--container-gap);
   padding-right: var(--container-gap);
   box-sizing: border-box;
+
 }
 
 /* HEADER / NAV (mobile-first) */
-header { width: 100%; background: var(--nav-bg); color: var(--nav-ink); }
+header { width: 100%;
+     background: var(--nav-bg);
+     }
+
 nav {
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 0.5rem 0;
+  padding: 0.9rem 0;
   position: relative;
   min-height: var(--nav-height);
   width: 100%;
   z-index: 40;
+  color: var(--accent);
+  font-family: var(--h1-font);
+  overflow: visible;
+}
+
+nav h1, a{
+  font: var(--h1-font);  
 }
 
 /* BRAND */
 .brand { display: flex; flex-direction: column; gap: 0; margin: 0; }
-.brand h1 { color: var(--nav-ink); font-size: 1rem; margin: 0; font-weight: 700; }
+.brand h1 { color: var(--accent); font-size: 1rem; margin: 0; font-weight: 700; }
 .brand .hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
 /* HIDDEN CHECKBOX (kept in DOM) */
@@ -94,13 +110,13 @@ ul.menu {
   margin-top: .5rem;
   background: transparent;
   position: relative;
-  z-index: 20;
+  z-index: 60;
 }
 ul.menu li { margin: 0; }
 ul.menu li a {
   display: block;
   padding: .75rem 1rem;
-  color: var(--nav-ink);
+  color: var(--accent);
   text-decoration: none;
   font-weight: 600;
   font-size: .98rem;
@@ -180,7 +196,7 @@ ul.menu li a:hover { background: rgba(255,255,255,0.06); }
   ul.menu li a { font-size: 1rem; padding: .6rem .85rem; }
 }
 
-/* HERO & BAR CHART (example content) */
+/* HERO & BAR CHART */
 .hero {
   background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/vanguard-hero.jpg') no-repeat center/cover;
   height: 40vh;
