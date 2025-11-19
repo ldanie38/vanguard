@@ -367,6 +367,69 @@ ul.menu li a:hover { background: rgba(255,255,255,0.06); }
     font-style: normal;
 }
 
+/* */
+.container_two{
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 1.25rem 0;
+}
+
+.head_line{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   margin-top: 20px;
+   margin-bottom: 1rem;
+
+}
+ 
+.head_line h2{
+  font: var(--h1-font);
+  font-size: 1.4rem;    
+  line-height: 1.12;
+  margin: 0 0 0.5rem 0;
+
+    
+}
+.head_line p{
+    font-family:var(--p-font);
+    font-size: 1.1rem;                  
+    line-height: 2;                
+    margin: 0 0 1rem 0; 
+    font-weight: 650;
+    font-style: normal;
+
+}
+
+/* defensive: ensure wrapper exists and children can shrink */
+.profit_growth { display: block; gap: 1rem; width: 100%; box-sizing: border-box; }
+.profit, .growth { box-sizing: border-box; min-width: 0; width: 100%; }
+
+/* force side-by-side starting at small breakpoint */
+@media (min-width: 600px) { /* or use your var(--bp-small) */
+  .profit_growth {
+    display: flex !important;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+  }
+  .profit { flex: 1.4 1 0%; min-width: 0; }
+  .growth { flex: 1 1 0%; min-width: 0; }
+}
+
+/* debug outlines (remove when done) */
+.profit_growth.debug { outline: 2px dashed rgba(0,0,0,0.12); }
+.profit.debug, .growth.debug { outline: 1px dashed rgba(255,0,0,0.12); }
+
+
+
+
+.profit_growth.debug { outline: 2px dashed rgba(0,0,0,0.12); }
+.profit.debug, .growth.debug { outline: 1px dashed rgba(255,0,0,0.12); }
+
 
 
 
