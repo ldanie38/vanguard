@@ -14,8 +14,8 @@ a { color: inherit; text-decoration: none; }
 ol, ul { list-style: none; margin: 0; padding: 0; }
 button, input, select, textarea { font: inherit; color: inherit; }
 
+/* Font */
 
-@import url("https://use.typekit.net/xhr5ozi.css");
 
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap");
 
@@ -36,7 +36,8 @@ button, input, select, textarea { font: inherit; color: inherit; }
   --bp-large: 1024px;
   --nav-h1-size: 1.90rem;  
   --nav-link-size: 1.30rem;
-  --font: "Inter", sans-serif;
+  --white: #EAEAEA;
+
 
 }
 
@@ -48,13 +49,23 @@ button, input, select, textarea { font: inherit; color: inherit; }
   padding-left: var(--container-gap);
   padding-right: var(--container-gap);
   box-sizing: border-box;
-
 }
-body {
 
-  background-color: var(--accent);
- 
+
+.header-band {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background:var(--accent); 
+  padding-bottom: 0.45rem; /* extra space below nav */
+  box-sizing: border-box;
+  z-index: 30;             
 }
+
+
 /* HEADER / NAV (mobile-first) */
 header { width: 100%;
      background: var(--nav-bg);
@@ -76,6 +87,10 @@ nav {
 
 nav h1, a{
   font: var(--h1-font);  
+}
+
+main{
+    font: var(--body-font);
 }
 
 nav .brand h1,
@@ -159,14 +174,17 @@ ul.menu li a:hover { background: rgba(255,255,255,0.06); }
 #menu-toggle:checked + label svg rect:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 #menu-toggle:checked + label svg rect:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* blue line */
 
+
+.first__block,
+#hero,
+.hero,
+.first__block > section,
+.first__block .site-inner {
+  margin-top: 0;
+  padding-top: 0;
+}
 /* base — stays inside container on small screens */
-
-
-
-
-
 
 
 
@@ -201,6 +219,13 @@ ul.menu li a:hover { background: rgba(255,255,255,0.06); }
   outline: 3px solid color-mix(in srgb, var(--accent, #007BFF) 30%, white 70%);
   outline-offset: 3px;
   box-shadow: 0 8px 22px rgba(2, 6, 23, 0.2);
+}
+
+
+/* Expertise and services section*/
+
+ .container_one{
+    background-color: var(--white);
 }
 
 
