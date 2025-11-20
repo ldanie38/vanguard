@@ -562,7 +562,7 @@ results-table td {
   background: var(--charcoal);
   border-radius: 10px;
   position: relative;
-  transition: height .5s ease; /* fixed: valid transition */
+  transition: height .5s ease; 
 
 }
 
@@ -590,3 +590,72 @@ results-table td {
 .bar[data-year="2020"] { --height: 120px; }
 .bar[data-year="2021"] { --height: 180px; }
 .bar[data-year="2022"] { --height: 90px; }
+
+
+/* Small: 0–479px */
+@media (max-width: 479px) {
+  nav { padding: 0.4rem 0; }
+  .brand h1 { font-size: 1rem; }
+  nav a { font-size: 0.9rem; }
+
+  .container_one { width: 94%; padding: 0.75rem 0; }
+  .expertise h2 { font-size: 1.25rem; text-align: center; }
+  .expertise p { font-size: 1rem; text-align: center; max-width: 44ch; }
+
+  .services .container { grid-template-columns: 1fr; }
+  .services-list { grid-template-columns: 1fr; }
+
+  .profit_growth {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "profit"
+      "growth";
+  }
+  .profit, .growth { max-width: none; width: 100%; }
+}
+
+/* Medium: 480–699px */
+@media (min-width: 480px) and (max-width: 699px) {
+  nav { padding: 0.5rem 0; }
+  .brand h1 { font-size: 1.2rem; }
+  nav a { font-size: 1rem; }
+
+  .container_one { width: 92%; padding: 1rem 0; }
+  .expertise h2 { font-size: 1.4rem; text-align: left; }
+  .expertise p { font-size: 1.1rem; text-align: left; max-width: 56ch; }
+
+  .services .container { grid-template-columns: repeat(2, 1fr); }
+  .services-list { grid-template-columns: repeat(2, 1fr); }
+
+  .profit_growth {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "profit"
+      "growth";
+  }
+}
+
+/* Large: 700px and up */
+@media (min-width: 700px) {
+  nav { padding: 0.6rem 0; align-items: center; }
+  nav > label { display: none; }
+  ul.menu { display: flex; gap: 1rem; }
+
+  .brand { flex-direction: row; gap: 1rem; align-items: center; }
+  .brand h1 { font-size: 1.4rem; }
+  nav a { font-size: 1.1rem; }
+
+  .container_one { width: 90%; padding: 1.5rem 0; }
+  .expertise h2 { font-size: 1.6rem; }
+  .expertise p { font-size: 1.25rem; max-width: 68ch; }
+
+  .services .container { grid-template-columns: repeat(3, 1fr); }
+  .services-list { grid-template-columns: repeat(3, 1fr); }
+
+  .profit_growth {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "headline headline"
+      "profit growth";
+  }
+}
