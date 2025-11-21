@@ -630,11 +630,22 @@ results-table td {
   color: #fff;
 }
 
-/* Contact Form: 2 rows × 3 columns */
+.contact_header p{
+    font-family:var(--p-font);
+}
+
+.contact-form label{
+  font-size: 0.9rem;       
+  font-weight: lighter;
+  font: var(--h1-font);
+    
+}
+
+/* Contact Form: 3 rows × 2 columns */
 .contact-form {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
-  grid-template-rows: repeat(2, auto);   /* 2 rows */
+  grid-template-columns: repeat(2, 1fr); /* 2 equal columns */
+  grid-template-rows: repeat(3, auto);   /* 3 rows */
   gap: 1rem;
   width: 100%;
   margin: 1rem 0;
@@ -659,10 +670,16 @@ results-table td {
   color: var(--white);
 }
 
+/* Inputs normalized */
+.contact-form input {
+  height: 40px;
+  line-height: 40px;
+}
+
 .contact-form input,
 .contact-form textarea {
   width: 100%;
-  max-width: 100%;         /* fill grid cell */
+  max-width: 100%;
   padding: 0.5rem;
   border: 1px solid #fff;
   border-radius: 4px;
@@ -672,20 +689,25 @@ results-table td {
   box-sizing: border-box;
 }
 
+/* Textarea taller */
 .contact-form textarea {
-  resize: vertical;
   min-height: 80px;
+  height: 80px;
+  line-height: 1.4;
+  resize: vertical;
 }
 
-/* Button cell */
+/* Button same height as inputs */
 .contact-form .btn-primary {
   display: inline-block;
-  width: auto;             /* shrink to content */
+  height: 40px;
+  line-height: 40px;
+  width: auto;
   margin-top: 0.5rem;
-  background-color: #fff;
-  color: var(--accent);
+  background-color: var(--accent);
+  color: var(--white);
   font-weight: 600;
-  padding: 0.5rem 1rem;
+  padding: 0 1rem;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -694,9 +716,10 @@ results-table td {
 
 .contact-form .btn-primary:hover {
   background-color: #000;
-  color: #fff;
+  color: var(--accent);
   border: 1px solid #fff;
 }
+
 
 /* Contact Info */
 .contact-info {
