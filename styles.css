@@ -36,6 +36,9 @@ button, input, select, textarea { font: inherit; color: inherit; }
   --white: #EAEAEA;
 }
 
+/* GLOBAL STYLES*/
+
+
 /* LAYOUT CONTAINERS */
 .container-nav,
 .container,
@@ -349,6 +352,14 @@ ul.menu li a:hover { background: rgba(255,255,255,0.06); }
   min-height: 140px;
 }
 
+.services-list li:hover {
+  box-shadow: 
+    0 0 16px rgba(0,123,255,0.75),   
+    0 0 32px rgba(0,123,255,0.5);   
+}
+
+
+
 .services-list h3 {
   font: var(--h1-font);
   font-size: 1.3rem;
@@ -505,7 +516,7 @@ ul.menu li a:hover { background: rgba(255,255,255,0.06); }
 .bar[data-year="2020"] { --height: 120px; }
 .bar[data-year="2021"] { --height: 180px; }
 .bar[data-year="2022"] { --height: 90px; }
-/* (Add bars for 2023, 2024 if needed) */
+
 
 /* Contact Section */
 .contact {
@@ -631,6 +642,12 @@ footer a {
 footer a:hover { color: var(--charcoal); }
 footer .container { max-width: 1200px; margin: 0 auto; }
 
+
+/*   Breakpoints:
+   - Small: 0–479px
+   - Medium: 480px–699px
+   - Large: 700px and up */
+
 /* Small: 0–479px */
 @media (max-width: 479px) {
   nav { padding: 0.4rem 0; }
@@ -679,7 +696,7 @@ footer .container { max-width: 1200px; margin: 0 auto; }
   nav { padding: 0.6rem 0; align-items: center; }
   nav > label { display: inline-flex; }
 
-  /* Keep menu collapsible at large screens; do NOT use display:none */
+  /* Keep menu collapsible at large screens*/
   ul.menu {
     max-height: 0;
     opacity: 0;
@@ -720,14 +737,14 @@ footer .container { max-width: 1200px; margin: 0 auto; }
     grid-template-columns: 1fr;   /* stack all fields in one column */
   }
   .contact_header h2 {
-    font-size: 1rem;              /* slightly smaller heading */
+    font-size: 1rem;             
   }
   .contact-form input,
   .contact-form textarea {
-    font-size: 0.85rem;           /* compact text */
+    font-size: 0.85rem;           
   }
   footer {
-    font-size: 0.8rem;            /* smaller footer text */
+    font-size: 0.8rem;           
   }
 }
 
@@ -751,11 +768,11 @@ footer .container { max-width: 1200px; margin: 0 auto; }
 /* Large: 700px and up */
 @media (min-width: 700px) {
   .contact-form {
-    grid-template-columns: repeat(2, 1fr); /* keep two columns */
-    gap: 1.25rem;                          /* more breathing room */
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 1.25rem;                         
   }
   .contact_header h2 {
-    font-size: 1.3rem;                      /* larger heading */
+    font-size: 1.3rem;                     
   }
   .contact-form input,
   .contact-form textarea {
@@ -771,17 +788,17 @@ footer .container { max-width: 1200px; margin: 0 auto; }
 @media (max-width: 479px) {
   .site-inner {
     flex-direction: column;
-    align-items: center;   /* center children */
-    gap: 0.5rem;           /* less vertical space */
+    align-items: center;  
+    gap: 0.5rem;          
     padding: 0.25rem;
   }
 
   .blur-block {
-    display: inline-block; /* shrink to fit content */
-    max-width: 85%;        /* narrower cap */
-    padding: 0.4rem 0.6rem;/* tighter padding */
+    display: inline-block; 
+    max-width: 85%;       
+    padding: 0.4rem 0.6rem;
     border-radius: 4px;
-    backdrop-filter: blur(2px); /* lighter blur */
+    backdrop-filter: blur(2px);
     background-color: rgba(0,0,0,0.2);
     text-align: center;
   }
@@ -797,7 +814,7 @@ footer .container { max-width: 1200px; margin: 0 auto; }
   }
 
   .cta {
-    margin-top: 0.25rem;   /* keep button close */
+    margin-top: 0.25rem;   
     align-self: center;
   }
 }
@@ -807,9 +824,9 @@ footer .container { max-width: 1200px; margin: 0 auto; }
 @media (max-width: 479px) {
   .head_line {
     display: flex;
-    flex-direction: column;   /* stack neatly */
-    align-items: center;      /* center both h2 and p */
-    text-indent: 0;           /* remove large indent */
+    flex-direction: column;  
+    align-items: center;      
+    text-indent: 0;          
     margin: 0 auto;
     padding: 0.5rem;
     width: 100%;
@@ -825,7 +842,7 @@ footer .container { max-width: 1200px; margin: 0 auto; }
     font-size: 0.95rem;
     text-align: center;
     margin: 0;
-    max-width: 90%;           /* prevent stretching edge to edge */
+    max-width: 90%;         
   }
 }
 
