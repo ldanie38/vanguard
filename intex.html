@@ -22,32 +22,37 @@
 <div class="header-band">
 <header>
   <div class="container-nav">
-  <nav>
-    <div class="brand">
+    <nav>
+      <div class="brand">
         <img src="images/vanguard-logo.svg" alt="Vanguard logo" class="logo" />
         <h1>Vanguard</h1>
-        <h2 class ='hidden'>Main Navigation</h2>
-    </div>
+        <h2 class="hidden">Main Navigation</h2>
+      </div>
 
+      <!-- checkbox first -->
+      <input id="menu-toggle" type="checkbox" aria-hidden="true" />
 
-    <input id="menu-toggle" type="checkbox" aria-hidden="true" />
-    <label for="menu-toggle" aria-label="Toggle menu" title="Toggle menu">
-      <!-- simple SVG hamburger icon -->
-      <svg width="22" height="16" viewBox="0 0 22 16" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-        <rect y="0" width="22" height="2" rx="1" fill="#fff"/>
-        <rect y="7" width="22" height="2" rx="1" fill="#fff"/>
-        <rect y="14" width="22" height="2" rx="1" fill="#fff"/>
-      </svg>
-    </label>
+      <!-- label right after input -->
+      <label for="menu-toggle" aria-label="Toggle menu" title="Toggle menu">
+        <svg width="22" height="16" viewBox="0 0 22 16" xmlns="http://www.w3.org/2000/svg">
+          <rect y="0" width="22" height="2" rx="1" fill="#fff"/>
+          <rect y="7" width="22" height="2" rx="1" fill="#fff"/>
+          <rect y="14" width="22" height="2" rx="1" fill="#fff"/>
+        </svg>
+      </label>
 
-    <ul class="menu" role="menu" aria-label="Main menu">
-      <li role="none"><a role="menuitem" href="#">About</a></li>
-      <li role="none"><a role="menuitem" href="#">Sevices</a></li>
-      <li role="none"><a role="menuitem" href="#">Contact</a></li>
-    </ul>
-  </nav>
+      <!-- menu after label -->
+      <ul class="menu" role="menu" aria-label="Main menu">
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
   </div>
 </header>
+
+
+
 </div>
 <main>
 
