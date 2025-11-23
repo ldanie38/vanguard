@@ -229,21 +229,26 @@ ul.menu li a:hover { background: rgba(255,255,255,0.06); }
 .hero h2 {
   font: var(--h1-font);
   font-size: 1.5rem; line-height: 1.12;
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.5rem 0; text-align: center;
 }
 
 .hero p {
   font-family: var(--p-font); font-weight: 900; font-style: normal;
-  font-size: 1.2rem; line-height: 2; margin: 0 0 1rem 0;
+  font-size: 1.2rem; line-height: 2; margin: 0 0 1rem 0;text-align: center;
 }
 
 .blur-block {
+    width: 100%;          
+    padding: 0.75rem;
+    border-radius: 0;
   backdrop-filter: blur(6px); 
   background-color: rgba(0,0,0,0.20); 
   padding: 1rem;
   border-radius: 8px;
   display: inline-block;
 }
+
+
 
 
 .site-inner{
@@ -270,6 +275,7 @@ ul.menu li a:hover { background: rgba(255,255,255,0.06); }
   -webkit-tap-highlight-color: transparent;
  width: fit-content;      
   max-width: 350px; 
+  align-self: center;
 }
 .cta:hover {
   background: color-mix(in srgb, var(--accent) 85%, black 15%);
@@ -703,3 +709,126 @@ footer .container { max-width: 1200px; margin: 0 auto; }
       "profit growth";
   }
 }
+
+
+
+
+/* contact form and footer*/
+/* Small: 0–479px */
+@media (max-width: 479px) {
+  .contact-form {
+    grid-template-columns: 1fr;   /* stack all fields in one column */
+  }
+  .contact_header h2 {
+    font-size: 1rem;              /* slightly smaller heading */
+  }
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 0.85rem;           /* compact text */
+  }
+  footer {
+    font-size: 0.8rem;            /* smaller footer text */
+  }
+}
+
+/* Medium: 480–699px */
+@media (min-width: 480px) and (max-width: 699px) {
+  .contact-form {
+    grid-template-columns: repeat(2, 1fr); /* two columns */
+  }
+  .contact_header h2 {
+    font-size: 1.1rem;
+  }
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 0.9rem;
+  }
+  footer {
+    font-size: 0.85rem;
+  }
+}
+
+/* Large: 700px and up */
+@media (min-width: 700px) {
+  .contact-form {
+    grid-template-columns: repeat(2, 1fr); /* keep two columns */
+    gap: 1.25rem;                          /* more breathing room */
+  }
+  .contact_header h2 {
+    font-size: 1.3rem;                      /* larger heading */
+  }
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 1rem;
+  }
+  footer {
+    font-size: 0.9rem;                   
+  }
+}
+
+
+
+@media (max-width: 479px) {
+  .site-inner {
+    flex-direction: column;
+    align-items: center;   /* center children */
+    gap: 0.5rem;           /* less vertical space */
+    padding: 0.25rem;
+  }
+
+  .blur-block {
+    display: inline-block; /* shrink to fit content */
+    max-width: 85%;        /* narrower cap */
+    padding: 0.4rem 0.6rem;/* tighter padding */
+    border-radius: 4px;
+    backdrop-filter: blur(2px); /* lighter blur */
+    background-color: rgba(0,0,0,0.2);
+    text-align: center;
+  }
+
+  .blur-block h2 {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .blur-block p {
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .cta {
+    margin-top: 0.25rem;   /* keep button close */
+    align-self: center;
+  }
+}
+
+
+
+@media (max-width: 479px) {
+  .head_line {
+    display: flex;
+    flex-direction: column;   /* stack neatly */
+    align-items: center;      /* center both h2 and p */
+    text-indent: 0;           /* remove large indent */
+    margin: 0 auto;
+    padding: 0.5rem;
+    width: 100%;
+  }
+
+  .head_line h2 {
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 0.25rem;
+  }
+
+  .head_line p {
+    font-size: 0.95rem;
+    text-align: center;
+    margin: 0;
+    max-width: 90%;           /* prevent stretching edge to edge */
+  }
+}
+
+
+
+
