@@ -788,34 +788,36 @@ footer .container { max-width: 1200px; margin: 0 auto; }
 @media (max-width: 479px) {
   .site-inner {
     flex-direction: column;
-    align-items: center;  
-    gap: 0.5rem;          
-    padding: 0.25rem;
+    align-items: center;
+    gap: 0.25rem;          /* tighter spacing */
+    padding: 0.15rem;
   }
 
   .blur-block {
-    display: inline-block; 
-    max-width: 85%;       
-    padding: 0.4rem 0.6rem;
-    border-radius: 4px;
-    backdrop-filter: blur(2px);
-    background-color: rgba(0,0,0,0.2);
+    display: inline-block;
+    max-width: 75%;        /* narrower cap */
+    padding: 0.25rem 0.5rem; /* very tight padding */
+    border-radius: 3px;
+    backdrop-filter: blur(1.5px); /* lighter blur */
+    background-color: rgba(0,0,0,0.15);
     text-align: center;
   }
 
   .blur-block h2 {
-    font-size: 1rem;
-    margin-bottom: 0.25rem;
+    font-size: 0.9rem;     /* smaller heading */
+    margin-bottom: 0.2rem;
   }
 
   .blur-block p {
-    font-size: 0.9rem;
-    margin-bottom: 0.25rem;
+    font-size: 0.8rem;     /* smaller paragraph */
+    margin-bottom: 0.2rem;
   }
 
   .cta {
-    margin-top: 0.25rem;   
+    margin-top: 0.2rem;    /* keep button close */
     align-self: center;
+    font-size: 0.85rem;    /* slightly smaller button text */
+    padding: 0.45rem 0.75rem; /* tighter button padding */
   }
 }
 
@@ -845,6 +847,54 @@ footer .container { max-width: 1200px; margin: 0 auto; }
     max-width: 90%;         
   }
 }
+
+
+/* Small: 0–479px */
+@media (max-width: 479px) {
+  .profit_growth {
+    display: flex;              /* switch from grid to flex */
+    flex-direction: column;     /* stack children vertically */
+    gap: 1rem;
+    width: 100%;
+    padding: 0.5rem;
+  }
+
+  .profit, .growth {
+    width: 100%;
+    max-width: 100%;
+    padding: 0.5rem;
+    margin: 0 auto;
+  }
+
+  .profit h3, .growth h3 {
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .results-table {
+    font-size: 0.85rem;         /* smaller table text */
+  }
+  .results-table th, .results-table td {
+    padding: 0.4rem;
+  }
+
+  #bar-chart {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.5rem;
+    height: 180px;              /* shorter chart */
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  .bar {
+    width: 24px;                /* narrower bars */
+  }
+  .bar::after {
+    font-size: 0.75rem;         /* smaller year labels */
+    bottom: -18px;
+  }
+}
+
 
 
 
