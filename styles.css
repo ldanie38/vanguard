@@ -439,25 +439,40 @@ ul.menu li a:hover { background: rgba(255,255,255,0.06); }
 }
 
 /* Headline */
-.head_line{
-  display: flex; 
-  flex-direction: column; 
-  justify-content: center;
-  margin-top: 20px; 
-  margin-bottom: 1rem; 
+.head_line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;        /* horizontal centering */
+  justify-content: flex-start;    /* vertical centering within the block */
   width: 100%;
-  text-indent: 180px;
-    margin-left: 0; 
-    padding-left: 0; 
-    padding-right: 0; 
-
+  max-width: 900px;           /* keeps the block visually balanced on wide screens */
+  margin: 20px auto 1rem auto;/* centers the block on the page */
+  padding: 0.5rem 1rem;
+  box-sizing: border-box;
+  text-indent: 0;             /* remove large fixed indent so content stays centered */
+  gap: 0.35rem;
 }
 
+/* Heading and paragraph — scale smoothly across viewports */
+.head_line h2 {
+  font: var(--h1-font);
+  font-size: clamp(1.2rem, 3.2vw, 1.9rem); /* scales from mobile to desktop */
+  line-height: 1.05;
+  margin: 0;
+  text-align: center;
+  font-weight: 600;
+}
 
-.head_line h2 { font: var(--h1-font); 
-    font-size: 1.4rem; 
-    line-height: 1; }
-
+.head_line p {
+  margin: 0;
+  font-size: clamp(0.95rem, 1.6vw, 1.15rem);
+  line-height: 1.4;
+  text-align: center;
+  max-width: 68ch;           /* keeps line length readable on large screens */
+  width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
 
 .profit,
 .growth,
@@ -687,7 +702,7 @@ ul.menu li a:hover { background: rgba(255,255,255,0.06); }
 
 /* Footer */
 footer {
-  background-color: var(--accent);
+  background-color: var(--nav-bg);
   color: var(--white);
   padding: 0.5rem 0.80rem;
   text-align: center;
@@ -704,158 +719,55 @@ footer a {
   font-size: 0.9rem;
   margin: 0;
 }
-footer a:hover { color: var(--charcoal); }
+footer a:hover { color: var(--accent); }
 footer .container { max-width: 1200px; margin: 0 auto; }
 
-
-/*   Breakpoints:
-   - Small: 0–479px
-   - Medium: 480px–699px
-   - Large: 700px and up */
-
-/* Small: 0–479px */
-@media (max-width: 479px) {
-  nav { padding: 0.4rem 0; }
-  .brand h1 { font-size: 1rem; }
-  nav a { font-size: 0.9rem; }
-
-  .container_one { width: 94%; padding: 0.75rem 0; }
-  .expertise h2 { font-size: 1.25rem; text-align: center; }
-  .expertise p { font-size: 1rem; text-align: center; max-width: 44ch; }
-
-  .services .container { grid-template-columns: 1fr; }
-  .services-list { grid-template-columns: 1fr; }
-
-  .profit_growth {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "profit"
-      "growth";
-  }
-  .profit, .growth { max-width: none; width: 100%; }
+footer a[href^="mailto:"] {
+  color: var(--accent);
+  font-weight: 600; 
 }
 
-/* Medium: 480–699px */
-@media (min-width: 480px) and (max-width: 699px) {
-  nav { padding: 0.5rem 0; }
-  .brand h1 { font-size: 1.2rem; }
-  nav a { font-size: 1rem; }
-
-  .container_one { width: 92%; padding: 1rem 0; }
-  .expertise h2 { font-size: 1.4rem; text-align: left; }
-  .expertise p { font-size: 1.1rem; text-align: left; max-width: 56ch; }
-
-  .services .container { grid-template-columns: repeat(2, 1fr); }
-  .services-list { grid-template-columns: repeat(2, 1fr); }
-
-  .profit_growth {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "profit"
-      "growth";
-  }
-}
-
-/* Large: 700px and up */
-@media (min-width: 700px) {
-  nav { padding: 0.6rem 0; align-items: center; }
-  nav > label { display: none; }
-
-  /* Keep menu collapsible at large screens*/
-  ul.menu {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: max-height .32s ease, opacity .2s ease;
-  }
-  #menu-toggle:checked ~ label ~ ul.menu {
-    max-height: 800px;
-    opacity: 1;
-  }
-
-  .brand { flex-direction: row; gap: 1rem; align-items: center; }
-  .brand h1 { font-size: 1.4rem; }
-  nav a { font-size: 1.1rem; }
-
-  .container_one { width: 90%; padding: 1.5rem 0; }
-  .expertise h2 { font-size: 1.6rem; }
-  .expertise p { font-size: 1.25rem; max-width: 68ch; }
-
-  .services .container { grid-template-columns: repeat(3, 1fr); }
-  .services-list { grid-template-columns: repeat(3, 1fr); }
-
-  .profit_growth {
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-      "headline headline"
-      "profit growth";
-  }
-}
+/* @MEDIA.  */
 
 
-
-/* Small: hamburger + collapsible menu */
-@media (max-width: 479px) {
+/* ---------- Mobile: 0–799px (mobile-first base rules inside media for clarity) ---------- */
+@media (max-width: 799px) {
+  /* Nav / header */
   nav {
+    padding: 0.4rem 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
-  }
-
-  nav > label {
-    display: inline-flex;
-  }
-
-  ul.menu {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: max-height .32s ease, opacity .2s ease;
-    text-align: center;
-    display: block;         
-    margin-left: 0;          
-  }
-
-  #menu-toggle:checked + label + ul.menu {
-    max-height: 500px;
-    opacity: 1;
-  }
-}
-
-
-/* Small screens: hamburger + collapsible menu */
-@media (max-width: 479px) {
-  /* Top row: brand + hamburger; second row: menu */
-  nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;      /* allows menu to drop to a new line */
+    flex-wrap: wrap;     
+    gap: 0.75rem;
     overflow: visible;
-    gap: 0.75rem;         /* space between h1 and hamburger */
   }
 
-  /* Keep checkbox accessible but off-screen (not display:none) */
-  #menu-toggle {
-    position: absolute;
-    left: -9999px;
+  .brand {
+    order: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
+  .brand h1 { font-size: 1rem; margin: 0; }
 
-  /* Brand first on the top row */
-  .brand { order: 1; }
+  /* Keep checkbox accessible (off-screen) */
+  #menu-toggle { position: absolute; left: -9999px; }
 
-  /* Hamburger sits next to the brand on the same row */
+  /* Hamburger label (next to H1) */
   nav > label {
     order: 2;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin-left: 0.5rem;  /* visually next to H1 */
+    margin-left: 0.5rem;
+    padding: 0.25rem;
+    cursor: pointer;
   }
 
-  /* Menu spans full width under the first row */
+  /* Collapsed menu (full width under top row) */
   ul.menu {
-    order: 3;             /* forces second row under brand+label */
+    order: 3;
     width: 100%;
     display: block;
     max-height: 0;
@@ -865,9 +777,11 @@ footer .container { max-width: 1200px; margin: 0 auto; }
     transition: max-height .32s ease, opacity .2s ease;
     text-align: center;
     background: transparent;
+    padding-inline: 0;
+    list-style: none;
   }
 
-  /* Toggle reveal: input + label + ul must be in this order (yours is) */
+  /* Reveal menu when toggled (input + label + ul order required) */
   #menu-toggle:checked + label + ul.menu {
     max-height: 600px;
     opacity: 1;
@@ -880,222 +794,198 @@ footer .container { max-width: 1200px; margin: 0 auto; }
     padding: 0.75rem 1rem;
     font-size: 1.05rem;
     font-weight: 600;
+    color: inherit;
+    text-decoration: none;
   }
+
+
+  .container_one { width: 94%; padding: 0.75rem 0; }
+  .expertise h2 { font-size: 1.25rem; text-align: center; }
+  .expertise p { font-size: 1rem; text-align: center; max-width: 44ch; }
+
+  .services .container,
+  .services-list { grid-template-columns: 1fr; }
+
+  .profit_growth {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "profit"
+      "growth";
+  }
+  .profit, .growth { max-width: none; width: 100%; }
+
+  /* Contact / footer small */
+  .contact-form { grid-template-columns: 1fr; }
+  .contact_header h2 { font-size: 1rem; }
+  .contact-form input, .contact-form textarea { font-size: 0.85rem; }
+  footer { font-size: 0.8rem; }
+
+  /* Hero / site-inner small */
+  .site-inner { flex-direction: column; 
+    align-items: center; 
+    gap: 0.25rem; 
+    padding: 0.15rem; }
+  .blur-block { display:inline-block; 
+    max-width:75%; padding:.25rem .5rem; 
+    border-radius:3px; 
+    backdrop-filter: blur(1.5px); 
+    background-color: rgba(0,0,0,0.15); 
+    text-align:center; }
+  .blur-block h2 { font-size:0.9rem; 
+    margin-bottom:.2rem; }
+  .blur-block p { 
+    font-size:0.8rem; 
+    margin-bottom:.2rem; }
+  .cta { 
+    margin-top:.2rem; 
+    align-self:center; 
+    font-size:.85rem; 
+    padding:.45rem .75rem; }
+
+  /* Headline small */
+.head_line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: .5rem;
+  width: 100%;
+  margin: 0 auto;
+}
+.head_line h2 {
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: .25rem;
+}
+.head_line p {
+  font-size: .95rem;
+  text-align: center;
+  max-width: 90%;
+  margin: 0;
+}
+  /* Charts / tables small */
+  .profit_growth { display:flex; flex-direction:column; gap:1rem; width:100%; padding:.5rem; }
+  .profit, .growth { width:100%; padding:.5rem; margin:0 auto; }
+  .profit h3, .growth h3 { font-size:1rem; text-align:center; margin-bottom:.5rem; }
+  .results-table { font-size:0.85rem; }
+  .results-table th, .results-table td { padding:0.4rem; }
+  #bar-chart { grid-template-columns: repeat(5,1fr); gap:.5rem; height:180px; max-width:100%; margin:0 auto; }
+  .bar { width:24px; }
+  .bar::after { font-size:0.75rem; bottom:-18px; }
 }
 
+/* ---------------- Medium: 800–1023px ---------------- */
+@media (min-width: 800px) and (max-width: 1023px) {
+  /* Nav */
+  nav { padding: 0.5rem 0; display:flex; align-items:center; justify-content:space-between; gap:0.5rem; flex-wrap:nowrap; }
 
+  .brand h1 { font-size: 1.2rem; }
+  nav a { font-size: 1rem; }
 
-/* Medium & large screens: brand left, menu flush right */
+  .container_one { width: 92%; padding: 1rem 0; }
+  .expertise h2 { font-size: 1.4rem; text-align: left; }
+  .expertise p { font-size: 1.1rem; text-align: left; max-width: 56ch; }
 
-@media (min-width: 480px) {
-  /* Make the actual nav a flex container */
-  .container-nav nav,
-  nav {
-    display: flex;
-    align-items: center;
+  .services .container, .services-list { grid-template-columns: repeat(2, 1fr); }
+
+  .profit_growth {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "profit"
+      "growth";
   }
 
-  /* Brand stays left */
-  .brand { flex: 0 0 auto; }
+  /* Menu behavior: hide hamburger, show horizontal menu */
+  nav > label { display: none !important; }
+  ul.menu {
+    display: flex;
+    gap: 1.5rem;
+    margin-left: auto;
+    width: auto;
+    max-height: none;
+    opacity: 1;
+    overflow: visible;
+    text-align: left;
+    padding-inline: 0;
+    list-style: none;
+  }
+  ul.menu li a {
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 0.6rem 0.9rem;
+    color: var(--accent);
+    text-decoration: none;
+    white-space: nowrap;
+  }
 
-  /* Hide hamburger on medium/large */
+  /* Contact / footer medium */
+  .contact-form { grid-template-columns: repeat(2,1fr); }
+  .contact_header h2 { font-size: 1.1rem; }
+  .contact-form input, .contact-form textarea { font-size: 0.9rem; }
+  footer { font-size: 0.85rem; }
+
+  /* Hero adjustments */
+  .site-inner { align-items: flex-start; gap: 0.75rem; }
+  .blur-block { max-width: 60%; text-align:left; background-color: rgba(0,0,0,0.12); }
+  .blur-block h2 { font-size: 1.2rem; }
+  .blur-block p { font-size: 1.05rem; max-width: 56ch; }
+  .cta { align-self:flex-start; padding:.65rem 1rem; font-size: .98rem; }
+}
+
+/* ---------------- Large: 1024px and up ---------------- */
+@media (min-width: 1024px) {
+  nav { padding: 0.6rem 0; align-items: center; }
+
+  /* Hide hamburger on large screens */
   nav > label { display: none !important; }
 
-  /* Menu flush right and visible */
-  ul.menu {
-    display: flex !important;
-    gap: 2rem;
-    margin-left: auto !important;   /* pushes all the way right */
-    max-height: none !important;
-    opacity: 1 !important;
-    overflow: visible !important;
-    background: transparent;
-    position: static;
-    text-align: left;
-    width: auto !important;         /* undo width:100% from mobile */
-  }
 
+  ul.menu {
+    display: flex;
+    gap: 2rem;
+    margin-left: auto;
+    width: auto;
+    max-height: none;
+    opacity: 1;
+    overflow: visible;
+    text-align: left;
+    padding-inline: 0;
+    list-style: none;
+  }
   ul.menu li a {
-    font-size: 1.4rem;
+    font-size: 1.1rem;
     font-weight: 700;
     padding: 0.75rem 1.25rem;
-    margin-left: 0 !important;      /* remove the big left margin */
-  }
-}
-
-
-
-
-
-
-
-
-/* contact form and footer*/
-/* Small: 0–479px */
-@media (max-width: 479px) {
-  .contact-form {
-    grid-template-columns: 1fr;   /* stack all fields in one column */
-  }
-  .contact_header h2 {
-    font-size: 1rem;             
-  }
-  .contact-form input,
-  .contact-form textarea {
-    font-size: 0.85rem;           
-  }
-  footer {
-    font-size: 0.8rem;           
-  }
-}
-
-/* Medium: 480–699px */
-@media (min-width: 480px) and (max-width: 699px) {
-  .contact-form {
-    grid-template-columns: repeat(2, 1fr); /* two columns */
-  }
-  .contact_header h2 {
-    font-size: 1.1rem;
-  }
-  .contact-form input,
-  .contact-form textarea {
-    font-size: 0.9rem;
-  }
-  footer {
-    font-size: 0.85rem;
-  }
-}
-
-/* Large: 700px and up */
-@media (min-width: 700px) {
-  .contact-form {
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 1.25rem;                         
-  }
-  .contact_header h2 {
-    font-size: 1.3rem;                     
-  }
-  .contact-form input,
-  .contact-form textarea {
-    font-size: 1rem;
-  }
-  footer {
-    font-size: 0.9rem;                   
-  }
-}
-
-
-
-@media (max-width: 479px) {
-  .site-inner {
-    flex-direction: column;
-    align-items: center;
-    gap: 0.25rem;          /* tighter spacing */
-    padding: 0.15rem;
+    color: var(--accent);
+    text-decoration: none;
+    white-space: nowrap;
   }
 
-  .blur-block {
-    display: inline-block;
-    max-width: 75%;        /* narrower cap */
-    padding: 0.25rem 0.5rem; /* very tight padding */
-    border-radius: 3px;
-    backdrop-filter: blur(1.5px); /* lighter blur */
-    background-color: rgba(0,0,0,0.15);
-    text-align: center;
-  }
+  .brand { flex-direction: row; gap: 1rem; align-items: center; }
+  .brand h1 { font-size: 1.4rem; }
 
-  .blur-block h2 {
-    font-size: 0.9rem;     /* smaller heading */
-    margin-bottom: 0.2rem;
-  }
+  .container_one { width: 90%; padding: 1.5rem 0; }
+  .expertise h2 { font-size: 1.6rem; }
+  .expertise p { font-size: 1.25rem; max-width: 68ch; }
 
-  .blur-block p {
-    font-size: 0.8rem;     /* smaller paragraph */
-    margin-bottom: 0.2rem;
-  }
+  .services .container, .services-list { grid-template-columns: repeat(3, 1fr); }
 
-  .cta {
-    margin-top: 0.2rem;    /* keep button close */
-    align-self: center;
-    font-size: 0.85rem;    /* slightly smaller button text */
-    padding: 0.45rem 0.75rem; /* tighter button padding */
-  }
-}
-
-
-
-@media (max-width: 479px) {
-  .head_line {
-    display: flex;
-    flex-direction: column;  
-    align-items: center;      
-    text-indent: 0;          
-    margin: 0 auto;
-    padding: 0.5rem;
-    width: 100%;
-  }
-
-  .head_line h2 {
-    font-size: 1.2rem;
-    text-align: center;
-    margin-bottom: 0.25rem;
-  }
-
-  .head_line p {
-    font-size: 0.95rem;
-    text-align: center;
-    margin: 0;
-    max-width: 90%;         
-  }
-}
-
-/* bar chart and table fixes*/
-/* Small: 0–479px */
-@media (max-width: 479px) {
   .profit_growth {
-    display: flex;             
-    flex-direction: column;    
-    gap: 1rem;
-    width: 100%;
-    padding: 0.5rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "headline headline"
+      "profit growth";
   }
 
-  .profit, .growth {
-    width: 100%;
-    max-width: 100%;
-    padding: 0.5rem;
-    margin: 0 auto;
-  }
+  /* Contact / footer large */
+  .contact-form { grid-template-columns: repeat(2,1fr); gap:1.25rem; }
+  .contact_header h2 { font-size: 1.3rem; }
+  .contact-form input, .contact-form textarea { font-size: 1rem; }
+  footer { font-size: 0.9rem; }
 
-  .profit h3, .growth h3 {
-    font-size: 1rem;
-    text-align: center;
-    margin-bottom: 0.5rem;
-  }
-
-  .results-table {
-    font-size: 0.85rem;        
-  }
-  .results-table th, .results-table td {
-    padding: 0.4rem;
-  }
-
-  #bar-chart {
-    grid-template-columns: repeat(5, 1fr);
-    gap: 0.5rem;
-    height: 180px;             
-    max-width: 100%;
-    margin: 0 auto;
-  }
-  .bar {
-    width: 24px;                
-  }
-  .bar::after {
-    font-size: 0.75rem;        
-    bottom: -18px;
-  }
+  /* Hero / CTA large */
+  .site-inner { max-width: 1100px; }
+  .blur-block { max-width: 70%; padding: 1rem 1.25rem; }
+  .cta { font-size: 1.05rem; padding: 0.85rem 1.5rem; }
 }
-
-
-
 
 
