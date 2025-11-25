@@ -142,6 +142,7 @@ nav .brand h1,
 nav h1 { font-size: var(--nav-h1-size); }
 nav a { font-size: var(--nav-link-size); font-weight: 700; }
 
+
 /* BRAND */
 .brand {
   display: flex;
@@ -173,7 +174,8 @@ nav a { font-size: var(--nav-link-size); font-weight: 700; }
 /* HAMBURGER LABEL */
 nav > label {
     margin-left: 3rem;
-  display: inline-flex;
+  /*display: inline-flex;*/
+  display: none;
   align-items: center;
   justify-content: center;
   width: 40px; 
@@ -209,15 +211,15 @@ ul.menu {
   z-index: 60;
 }
 
-.brand label {
-  margin-left: 1rem; /* space between h1 and hamburger */
+/*.brand label {
+  margin-left: 1rem; 
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 32px;
   height: 32px;
   cursor: pointer;
-}
+} */
 
 ul.menu li { margin: 0; }
 ul.menu li a {
@@ -227,6 +229,7 @@ ul.menu li a {
   text-decoration: none;
   font-weight: 600;
   font-size: .98rem;
+  /*margin-left: 10rem;*/
 }
 ul.menu li a:hover { background: rgba(255,255,255,0.06); }
 
@@ -756,7 +759,7 @@ footer .container { max-width: 1200px; margin: 0 auto; }
 /* Large: 700px and up */
 @media (min-width: 700px) {
   nav { padding: 0.6rem 0; align-items: center; }
-  nav > label { display: inline-flex; }
+  nav > label { display: none; }
 
   /* Keep menu collapsible at large screens*/
   ul.menu {
@@ -788,6 +791,141 @@ footer .container { max-width: 1200px; margin: 0 auto; }
       "profit growth";
   }
 }
+
+
+
+/* Small: hamburger + collapsible menu */
+@media (max-width: 479px) {
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  nav > label {
+    display: inline-flex;
+  }
+
+  ul.menu {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height .32s ease, opacity .2s ease;
+    text-align: center;
+    display: block;         
+    margin-left: 0;          
+  }
+
+  #menu-toggle:checked + label + ul.menu {
+    max-height: 500px;
+    opacity: 1;
+  }
+}
+
+
+/* Small screens: hamburger + collapsible menu */
+@media (max-width: 479px) {
+  /* Top row: brand + hamburger; second row: menu */
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;      /* allows menu to drop to a new line */
+    overflow: visible;
+    gap: 0.75rem;         /* space between h1 and hamburger */
+  }
+
+  /* Keep checkbox accessible but off-screen (not display:none) */
+  #menu-toggle {
+    position: absolute;
+    left: -9999px;
+  }
+
+  /* Brand first on the top row */
+  .brand { order: 1; }
+
+  /* Hamburger sits next to the brand on the same row */
+  nav > label {
+    order: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0.5rem;  /* visually next to H1 */
+  }
+
+  /* Menu spans full width under the first row */
+  ul.menu {
+    order: 3;             /* forces second row under brand+label */
+    width: 100%;
+    display: block;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    margin-top: 0.5rem;
+    transition: max-height .32s ease, opacity .2s ease;
+    text-align: center;
+    background: transparent;
+  }
+
+  /* Toggle reveal: input + label + ul must be in this order (yours is) */
+  #menu-toggle:checked + label + ul.menu {
+    max-height: 600px;
+    opacity: 1;
+    overflow: visible;
+  }
+
+  /* Mobile link sizing */
+  ul.menu li a {
+    display: block;
+    padding: 0.75rem 1rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+}
+
+
+
+/* Medium & large screens: brand left, menu flush right */
+
+@media (min-width: 480px) {
+  /* Make the actual nav a flex container */
+  .container-nav nav,
+  nav {
+    display: flex;
+    align-items: center;
+  }
+
+  /* Brand stays left */
+  .brand { flex: 0 0 auto; }
+
+  /* Hide hamburger on medium/large */
+  nav > label { display: none !important; }
+
+  /* Menu flush right and visible */
+  ul.menu {
+    display: flex !important;
+    gap: 2rem;
+    margin-left: auto !important;   /* pushes all the way right */
+    max-height: none !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+    background: transparent;
+    position: static;
+    text-align: left;
+    width: auto !important;         /* undo width:100% from mobile */
+  }
+
+  ul.menu li a {
+    font-size: 1.4rem;
+    font-weight: 700;
+    padding: 0.75rem 1.25rem;
+    margin-left: 0 !important;      /* remove the big left margin */
+  }
+}
+
+
+
+
 
 
 
