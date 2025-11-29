@@ -881,7 +881,11 @@ footer a[href^="mailto:"] {
 
 @media (min-width: 600px) and (max-width: 899px) {
   /* Nav */
-  nav { padding: 0.5rem 0; display:flex; align-items:center; justify-content:space-between; gap:0.5rem; flex-wrap:nowrap; }
+  nav { padding: 0.5rem 0; 
+    display:flex; align-items:center;
+     justify-content:space-between; 
+     gap:0.5rem; 
+     flex-wrap:nowrap; }
 
   .brand h1 { font-size: 1.2rem; }
   nav a { font-size: 1rem; }
