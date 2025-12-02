@@ -619,6 +619,11 @@ ul.menu li a:hover { background: rgba(255,255,255,0.06); }
   box-sizing: border-box;
 }
 
+
+/* error visuals */
+
+.error-message { color: #ffb3b3; font-size: 0.9rem; margin-top: 0.35rem; }
+
 .contact-form .form-row {
   display: grid;
   grid-template-columns: 1fr;
@@ -654,6 +659,9 @@ ul.menu li a:hover { background: rgba(255,255,255,0.06); }
 
 .contact-form .btn-primary {
   display: inline-block;
+  align-items: center;      
+  justify-content: center;   
+  text-align: center;
   height: 40px; line-height: 40px;
   width: auto; margin-top: 0.5rem;
   background-color: var(--accent);
@@ -664,6 +672,10 @@ ul.menu li a:hover { background: rgba(255,255,255,0.06); }
   cursor: pointer;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
+
+
+
+
 .contact-form .btn-primary:hover {
   background-color: #000;
   color: var(--accent);
@@ -710,7 +722,10 @@ footer a[href^="mailto:"] {
 
 
 
-/* Mobile: 0–599px */
+
+
+/* GLOBAL STYLES (mobile first/small) */
+/*  0–599px */
 
 @media (max-width: 599px) {
   /* Nav / header */
@@ -750,7 +765,7 @@ footer a[href^="mailto:"] {
     cursor: pointer;
   }
 
-  /* Collapsed menu (full width under top row) */
+  /* Collapsed menu */
   ul.menu {
     order: 3;
     width: 100%;
@@ -855,13 +870,24 @@ footer a[href^="mailto:"] {
     padding:.45rem .75rem; }
 
   .contact-form label {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: var(--white);
   display: block;  
   margin-bottom: 0.5rem;
   font-family: var(--p-font); 
   font-weight: 900; 
   font-style: normal;
+  }
+
+  .head_line {
+    margin-right: 15px;
+    align-items: flex-start;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1100px;
+    align-self: start;     
+    justify-self: start;
   }
 
   /* Charts / tables small */
@@ -922,7 +948,7 @@ footer a[href^="mailto:"] {
       "growth";
   }
 
-  /* Menu behavior: hide hamburger, show horizontal menu */
+  /*  horizontal menu */
   nav > label { display: none !important; }
   ul.menu {
     display: flex;
@@ -967,6 +993,16 @@ footer a[href^="mailto:"] {
   margin-top: 0.5rem; 
   font-size: larger;
 }
+
+ .contact-form label {
+  font-size: 0.9rem;
+  color: var(--white);
+  display: block;  
+  margin-bottom: 0.5rem;
+  font-family: var(--p-font); 
+  font-weight: 900; 
+  font-style: normal;
+  }
 
 
 
@@ -1061,29 +1097,44 @@ footer a[href^="mailto:"] {
   .expertise h2 { font-size: 1.6rem; }
   .expertise p { font-size: 1.25rem; max-width: 68ch; }
 
-  .services .container, .services-list { grid-template-columns: repeat(3, 1fr); }
+  .services .container, .services-list { 
+    grid-template-columns: repeat(3, 1fr); }
 
   .profit_growth {
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
       "headline headline"
       "profit growth";
+
   }
 
 
-
-
   /* Contact / footer large */
-  .contact-form { grid-template-columns: repeat(2,1fr); gap:1.25rem; }
-  .contact_header h2, .head_line h2 { font-size: 1.3rem; }
+  .contact-form { 
+    grid-template-columns: repeat(2,1fr); 
+    gap:1.25rem; }
+  .contact_header h2, .head_line h2 { 
+    font-size: 1.3rem; }
 
+.head_line {
+    margin-right: 15px;
+    align-items: flex-start;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1100px;
+    align-self: start;     
+    justify-self: start;
+  }
 
-.head_line, .contact_header {
+ .contact_header {
   margin: 0 auto 1rem auto;   
   text-align: left;           
   align-items: flex-start;
   padding: 0.75rem;
 }
+
+
 
 .contact_header h2,
 .head_line h2 {
@@ -1109,14 +1160,24 @@ footer a[href^="mailto:"] {
   font-style: normal;
 }
 
-  .contact-form input, .contact-form textarea { font-size: 1rem; }
-  footer { font-size: 0.9rem; }
+
+
+  .contact-form input, .contact-form textarea { 
+    font-size: 1rem; }
+  footer { 
+    font-size: 0.9rem; }
 
   /* Hero / CTA large */
   .site-inner { max-width: 1100px; }
-  .blur-block { max-width: 70%; padding: 1rem 1.25rem; }
-  .cta { font-size: 1.05rem; padding: 0.85rem 1.5rem; }
+  .blur-block { max-width: 70%; 
+    padding: 1rem 1.25rem; }
+  .cta { font-size: 1.05rem; 
+    padding: 0.85rem 1.5rem; }
+
+
 }
+
+
 
 
 
