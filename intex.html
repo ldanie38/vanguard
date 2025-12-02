@@ -6,6 +6,7 @@
   <meta name="description" content="Vanguard — Leading the Future of Success. Strategic investment and business acceleration for high‑growth enterprises.">
   <meta name="keywords" content="business growth, strategic investment, mergers, corporate consulting, digital transformation">
   <meta name="author" content="Lua Daniele">
+  
 
   <title>Vanguard | Leading the Future of Success</title>
 
@@ -26,17 +27,15 @@
             <h2 class="hidden" aria-hidden="true">Main Navigation</h2>
           </div>
 
-          <input id="menu-toggle" type="checkbox" aria-hidden="true">
-
-          <label for="menu-toggle" aria-label="Toggle menu" title="Toggle menu">
+          <input id="menu-toggle" type="checkbox" aria-hidden="true" aria-controls="main-menu">
+          <label for="menu-toggle" title="Toggle menu" >
             <svg width="22" height="16" viewBox="0 0 22 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
               <rect y="0" width="22" height="2" rx="1" fill="#fff"></rect>
               <rect y="7" width="22" height="2" rx="1" fill="#fff"></rect>
               <rect y="14" width="22" height="2" rx="1" fill="#fff"></rect>
             </svg>
           </label>
-
-          <ul class="menu" role="menu" aria-label="Main menu" aria-hidden="true">
+          <ul class="menu" role="menu" id="main-menu" aria-label="Main menu" aria-hidden="true">
             <li><a href="#">About</a></li>
             <li><a href="#">Services</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -111,7 +110,7 @@
     </div>
 
     <div class="container_two">
-      <div class="head_line" aria-labelledby="results-heading">
+      <div class="head_line" role="region" aria-labelledby="results-heading">
         <h2 id="results-heading">Proven Results</h2>
         <p>Our data‑driven strategies have delivered outstanding ROI.</p>
       </div>
@@ -149,7 +148,8 @@
           </div>
         </div>
       </section>
-    </div>
+ 
+ 
 
     <section id="contact" class="contact" aria-labelledby="contact-heading">
       <div class="container_contact">
