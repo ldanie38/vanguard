@@ -4,7 +4,7 @@
 
 /*IMPORTED  Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap");
-@import url("https://use.typekit.net/bqc8ynf.css");
+
 
 /* CSS RESET*/
 html, body, div, span, applet, object, iframe,
@@ -208,15 +208,6 @@ ul.menu {
   z-index: 60;
 }
 
-/*.brand label {
-  margin-left: 1rem; 
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
-} */
 
 ul.menu li { margin: 0; }
 ul.menu li a {
@@ -238,7 +229,7 @@ ul.menu li a:hover { background: rgba(255,255,255,0.06); }
   opacity: 1;
 }
 
-/* MORPH HAMBURGER -> X */
+/*  HAMBURGER */
 #menu-toggle:checked + label svg rect:nth-child(2) { opacity: 0; }
 #menu-toggle:checked + label svg rect:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 #menu-toggle:checked + label svg rect:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
@@ -734,7 +725,9 @@ p.lead,
   line-height: 1.6;
 }
 
-
+.contact-form label {
+  font-weight: 300 !important;;
+}
 
 /* GLOBAL STYLES (mobile first/small) */
 /*  0–599px */
