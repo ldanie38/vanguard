@@ -65,9 +65,9 @@ button, input, select, textarea { font: inherit; color: inherit; }
 
 /* ROOT VARIABLES */
 :root{
-  --body-font: "Inter", sans-serif; 
-  --h1-font: normal 700 2rem/1.1 "Inter", sans-serif;
-  --p-font: "korolev-rounded", sans-serif;
+--body-font: "Inter", sans-serif; 
+--h1-font: normal 700 2rem/1.1 "Inter", sans-serif; 
+--p-font: "korolev-rounded", sans-serif;
   --nav-bg: #000000;   
   --nav-ink: #EAEAEA; 
   --accent: #007BFF;  
@@ -781,7 +781,7 @@ footer a[href^="mailto:"] {
     list-style: none;
   }
 
-  /* Reveal menu when toggled (input + label + ul order required) */
+  /* Reveal menu when toggled  */
   #menu-toggle:checked + label + ul.menu {
     max-height: 600px;
     opacity: 1;
@@ -799,12 +799,18 @@ footer a[href^="mailto:"] {
   }
 
 
-  .container_one { width: 94%; padding: 0.75rem 0; }
-  .expertise h2 { font-size: 1.25rem; text-align: center; }
-  .expertise p { font-size: 1rem; text-align: center; max-width: 44ch; }
+  .container_one { width: 94%; 
+    
+    padding: 0.75rem 0; }
+  .expertise h2 { font-size: 1.25rem; 
+    text-align: center; }
+  .expertise p { font-size: 1rem; 
+    text-align: center; 
+    max-width: 44ch; }
 
   .services .container,
-  .services-list { grid-template-columns: 1fr; }
+  .services-list { 
+    grid-template-columns: 1fr; }
 
   .profit_growth {
     grid-template-columns: 1fr;
@@ -1017,8 +1023,11 @@ footer a[href^="mailto:"] {
 
 
   /* Hero adjustments */
-  .site-inner { align-items: flex-start; gap: 0.75rem; }
-  .blur-block { max-width: 60%;
+  .site-inner { 
+    align-items: flex-start; 
+    gap: 0.75rem; }
+  .blur-block { 
+    max-width: 60%;
      text-align:left; 
      background-color: rgba(0,0,0,0.12); }
   .blur-block h2 { 
@@ -1049,11 +1058,19 @@ footer a[href^="mailto:"] {
     margin-top: 1rem;
   }
 
-  .site-inner { align-items: center; gap: 0.75rem; }
-  .blur-block { max-width: 60%; text-align:center; background-color: rgba(0,0,0,0.12); }
-  .blur-block h2 { font-size: 1.2rem; }
-  .blur-block p { font-size: 1.05rem; max-width: 56ch; }
-  .cta { align-self:flex-start; padding:.65rem 1rem; font-size: .98rem; }
+  .site-inner { align-items: center; 
+    gap: 0.75rem; }
+  .blur-block { max-width: 60%; 
+    text-align:center; 
+    background-color: rgba(0,0,0,0.12); }
+  .blur-block h2 { 
+    font-size: 1.2rem; }
+  .blur-block p { 
+    font-size: 1.05rem; 
+    max-width: 56ch; }
+  .cta { align-self:flex-start; 
+    padding:.65rem 1rem; 
+    font-size: .98rem; }
 }
 
 
@@ -1061,7 +1078,8 @@ footer a[href^="mailto:"] {
 /* MEDIA QUERY LARGE */
 /* Large: 900–1199px */
 @media (min-width: 900px) {
-  nav { padding: 0.6rem 0; align-items: center; }
+  nav { padding: 0.6rem 0; 
+    align-items: center; }
 
   /* Hide hamburger on large screens */
   nav > label { display: none !important; }
@@ -1093,9 +1111,11 @@ footer a[href^="mailto:"] {
     align-items: center; }
   .brand h1 { font-size: 1.4rem; }
 
-  .container_one { width: 90%; padding: 1.5rem 0; }
+  .container_one { width: 90%;
+     padding: 1.5rem 0; }
   .expertise h2 { font-size: 1.6rem; }
-  .expertise p { font-size: 1.25rem; max-width: 68ch; }
+  .expertise p { font-size: 1.25rem;
+     max-width: 68ch; }
 
   .services .container, .services-list { 
     grid-template-columns: repeat(3, 1fr); }
