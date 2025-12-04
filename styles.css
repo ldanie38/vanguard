@@ -67,7 +67,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 :root{
 --body-font: "Inter", sans-serif; 
 --h1-font: normal 700 2rem/1.1 "Inter", sans-serif; 
---p-font: "korolev-rounded", sans-serif;
+ --p-font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --nav-bg: #000000;   
   --nav-ink: #EAEAEA; 
   --accent: #007BFF;  
@@ -721,6 +721,18 @@ footer a[href^="mailto:"] {
 }
 
 
+/* override font */
+p,
+p.lead,
+.head_line p,
+.contact_header p,
+.results-desc,
+.growth p {
+  font-family: var(--p-font);
+  font-weight: 400 !important;
+  font-style: normal;
+  line-height: 1.6;
+}
 
 
 
